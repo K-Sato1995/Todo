@@ -1,0 +1,22 @@
+<h3>ログインページ</h3>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">登録フォーム</div>
+  </div>
+  <div class="panel-body">
+      <%= form_for(:session, url: login_path) do |f| %>
+      <div class="form-group">
+        <label>メールアドレス</label>
+        <%= f.email_field :email, placeholder:'メールアドレス', class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>パスワード</label>
+        <%= f.password_field :password, placeholder:'パスワード', class:"form-control" %>
+      </div>
+        <%= f.submit 'ログイン', class:"btn btn-primary" %>
+      <% end %>
+  </div>

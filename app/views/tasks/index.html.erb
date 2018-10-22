@@ -1,0 +1,44 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<h3 class = 'table-title'>一覧画面  <%= link_to '新規作成', new_task_path,class:"new-btn" %></h3>
+
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <div class="panel-title">検索</div>
+  </div>
+  <div class="panel-body">
+    <%= render 'search_form' %>
+  </div>
+</div>
+<table class = 'table table-hover'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= sort_link(@q, :priority, '優先度', default_order: :asc) %></th>
+      <th>タイトル</th>
+      <th>カテゴリー</th>
+      <th>進行状況</th>
+      <th id = 'deadline'><%= sort_link(@q, :deadline, '終了期限', default_order: :asc) %></th>
+      <th>編集</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tasks.each do |task|%>
+    <tr style = 'height:48px;'>
+      <td><%= task.id %></td>
+      <td> <p class="<%= task.priority %>"><%= task.priority_i18n %></p></td>
+      <td class = 'title_box'><%= link_to task.title, task_path(task) %></td>
+      <td class = 'tags'><%= task.all_tags %></td>
+      <td> <p class="<%= task.state %>"><%= task.state_i18n %></p></td>
+      <td class="col-md-3"><%= task.deadline.to_s(:deadline) %></td>
+      <td>
+        <%= link_to '編集',edit_task_path(task) %>
+        <%= link_to '削除', task_path(task),method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate(@tasks) %>

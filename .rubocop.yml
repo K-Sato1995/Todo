@@ -1,0 +1,77 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.4.4
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/**/*'
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'client/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+Rails:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/IndentHash:
+  EnforcedStyle: consistent
+Style/Lambda:
+  Enabled: false
+AbcSize:
+  Enabled: false
+# https://github.com/bbatsov/rubocop/issues/4246
+AmbiguousBlockAssociation:
+  Enabled: false
+AsciiComments:
+  Enabled: false
+BlockLength:
+  Max: 200
+CyclomaticComplexity:
+  Max: 10
+ClassAndModuleChildren:
+  Enabled: false
+ClassLength:
+  Max: 200
+EmptyCaseCondition:
+  Enabled: false
+FileName:
+  Exclude:
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/Capfile'
+    - '**/Guardfile'
+LineLength:
+  Max: 136
+MethodLength:
+  Max: 100
+ModuleLength:
+  Max: 200
+MultilineBlockChain:
+  Enabled: false
+MultilineOperationIndentation:
+  Enabled: false
+ParameterLists:
+  Max: 10
+PerceivedComplexity:
+  Max: 10
+PerlBackrefs:
+  Enabled: false
+SkipsModelValidations:
+  Enabled: false
+Performance/TimesMap:
+  Enabled: false
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - performance

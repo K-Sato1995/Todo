@@ -1,0 +1,146 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap-datetimepicker';
+// GLOBAL
+$p-color: #DB5E36;
+$p2-color: #E0E0E0;
+$h-color: #666;
+
+@mixin state($background-color) {
+  width: 100px;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+  background-color: $background-color;
+}
+
+@mixin priority($background-color) {
+  width: 50px;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+  background-color: $background-color;
+}
+
+h1 {
+  color: $h-color;
+}
+h2 {
+  color: $h-color;
+}
+h3 {
+  color: $h-color;
+}
+a {
+  color: $p-color;
+}
+a:hover {
+  color: #222;
+  text-decoration: none;
+}
+.alert {
+  margin-top: 20px;
+}
+//HEADER
+#header {
+  border-bottom: solid 1px $p2-color;
+}
+#title{
+  color: $h-color;
+}
+.nav {
+  position: absolute;
+  top: 12px;
+  right: 100px;
+  float: right;
+}
+.dropdown-item {
+  margin-left: 25px;
+}
+//SEARCH_BOX
+.title-search{
+  width: 350px;
+  display: inline-block;
+  input{
+    border: solid 1px $p2-color;
+    width: 200px;
+  }
+}
+.state-search{
+  width: 200px;
+  display: inline-block;
+}
+.btn{
+  width: 200px;
+  margin-left: 10px;
+  width: 100px;
+}
+.new-btn {
+  margin-top: -5px;
+  margin-left: 3px;
+  padding: 2px 7px 2px 7px;
+  border-radius: 3px;
+  font-weight: normal;
+  font-size: 20px;
+}
+//FOOTER
+footer {
+  margin-top: 50px;
+  padding-top:100px;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid $p2-color ;
+}
+//STATE
+.untouched {
+  @include state(#DB634E)
+}
+.wip {
+  @include state(#F4AE5C)
+}
+.done {
+  @include state(#7EE49F)
+}
+
+//Priority
+.normal {
+  @include priority(#4EAC5B)
+}
+.high {
+  @include priority(#FF8C00)
+}
+.urgent {
+  @include priority(#EB3223)
+}
+//ERROR
+#error_explanation {
+  ul {
+    color: #ee6c51;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+//TAGS
+.tags {
+  color: #808080;
+}

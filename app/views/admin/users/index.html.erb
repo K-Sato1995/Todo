@@ -1,0 +1,23 @@
+<h3>アドミン画面</h3>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<% @users.each do |user| %>
+  <ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">ユーザー情報</div>
+      <div class="panel-body">
+      <li>ユーザーネーム：　<%= user.name %></li>
+      <li>登録タスク数：　<%= user.tasks.length %></li>
+      <li><%= link_to '編集',edit_user_path(user) %></li>
+      <li><%= link_to '削除', user_path(user),method: :delete, data: { confirm: "本当に削除してもよろしいですか？" } %></li>
+      <h6>タスク一覧</h6>
+       <ul>
+         <% user.tasks.each do |t| %>
+           <li><%= t.title %></li>
+         <% end %>
+       </ul>
+  </ul>
+<% end %>
+</div>
+</div>

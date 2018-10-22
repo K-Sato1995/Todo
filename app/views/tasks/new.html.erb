@@ -1,0 +1,14 @@
+<h3>新規作成ページ</h3>
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      このフォームは <%= pluralize(@task.errors.count, "のエラーを含んでいます") %>.
+    </div>
+    <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= render 'form' %>

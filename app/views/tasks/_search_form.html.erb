@@ -1,0 +1,34 @@
+<form class="form-horizontal">
+  <%= search_form_for @q do |f| %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">タイトル絞込み</label>
+      <div class="col-sm-10">
+        <%= f.search_field :title_cont, placeholder:'タイトル名',class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">進行状況絞込み</label>
+      <div class="col-sm-10">
+        <%= f.select :state_eq, Task.states.map { |k,v| [Task.states_i18n[k], v] }, {:include_blank => true}, class:'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">優先度絞込み</label>
+      <div class="col-sm-10">
+      <%= f.select :priority_eq, Task.priorities.map { |k,v| [Task.priorities_i18n[k], v] }, {:include_blank => true}, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">カテゴリー絞込み</label>
+      <div class="col-sm-10">
+        <%= f.collection_check_boxes :tag_search, @tags, :id, :name, class:"form-control", checked: @checked %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit '検索', class: "btn btn-primary" %>
+        <%= link_to 'クリア', url_for, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</form>

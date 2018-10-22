@@ -1,0 +1,11 @@
+<h3>編集ページ</h3>
+<% if @task.errors.any? %>
+  <div class="alert alert-error">
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= render 'form'%>

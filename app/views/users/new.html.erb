@@ -1,0 +1,39 @@
+<h3>登録ページ</h3>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      このフォームは <%= pluralize(@user.errors.count, "のエラーを含んでいます") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">登録フォーム</div>
+  </div>
+  <div class="panel-body">
+      <%= form_for @user do |f| %>
+      <div class="form-group">
+       <label>ニックネーム</label>
+        <%= f.text_field :name, placeholder:'ニックネーム', class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>メールアドレス</label>
+        <%= f.email_field :email, placeholder:'メールアドレス', class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>パスワード</label>
+        <%= f.password_field :password, placeholder:'パスワード', class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>パスワード確認</label>
+        <%= f.password_field :password_confirmation, placeholder:'パスワード確認', class:"form-control" %>
+      </div>
+        <%= f.submit '登録する', class:"btn btn-primary" %>
+      <% end %>
+  </div>

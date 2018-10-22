@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">フォーム</div>
+  </div>
+  <div class="panel-body">
+      <%= form_for @task do |f|%>
+      <div class="form-group">
+       <label>タイトル</label>
+        <%= f.text_field :title, placeholder:'タイトル', class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <label>詳細</label>
+        <%= f.text_area :description, placeholder:'詳細', class:"form-control", rows:"4"  %>
+      </div>
+      <div class="form-group">
+        <label>日付</label>
+        <%= f.text_field :deadline, data: { :date_format => 'YYYY/MM/DD hh:mm' },id:'datetimepicker', placeholder:'終了期限', class:"form-control"  %>
+      </div>
+      <div class="form-group">
+        <label>進行状況</label>
+        <%= f.select :state, Task.states_i18n.invert, {}, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label>優先度</label>
+        <%= f.select :priority, Task.priorities_i18n.invert, {}, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+       <label>カテゴリー</label>
+        <%= f.text_field :all_tags, placeholder:'カテゴリー(, で区切って入力してください。)', class:"form-control" %>
+      </div>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
+  </div>
